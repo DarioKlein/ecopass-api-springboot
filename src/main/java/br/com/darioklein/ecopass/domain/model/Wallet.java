@@ -1,7 +1,6 @@
 package br.com.darioklein.ecopass.domain.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,6 @@ import java.time.LocalDate;
 @Table(name = "TB_WALLET")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Wallet {
 

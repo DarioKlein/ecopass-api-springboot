@@ -38,13 +38,13 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponseDTO> updateUser(@Valid @RequestBody UserUpdateDTO dto, @PathVariable Long id) {
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO dto) {
         UserResponseDTO user = userService.update(id, dto);
         return ResponseEntity.ok(user);
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Void> updatePartialUser(@Valid @RequestBody UserPatchDTO dto, @PathVariable Long id) {
+    public ResponseEntity<Void> updatePartialUser(@PathVariable Long id, @Valid @RequestBody UserPatchDTO dto) {
         userService.updatePartial(id, dto);
         return ResponseEntity.noContent().build();
     }

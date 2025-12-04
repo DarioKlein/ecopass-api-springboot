@@ -19,7 +19,7 @@ public record UserPatchDTO(
         String email,
 
         @Size(min = 11, max = 11, message = "O número de celular deve conter 11 dígitos")
-        @Pattern(regexp = "^[0-9]+$", message = "O telefone deve conter apenas números")
+        @Pattern(regexp = "^[0-9]+$", message = "O número de celular deve conter apenas números")
         String phone,
 
         @Past(message = "A data de nascimento não pode ser maior que a data atual")

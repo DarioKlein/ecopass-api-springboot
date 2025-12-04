@@ -34,13 +34,13 @@ public class WalletController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<WalletRespondeDTO> updateWallet(@Valid @RequestBody WalletUpdateDTO walletDTO, @PathVariable Long id) {
+    public ResponseEntity<WalletRespondeDTO> updateWallet(@PathVariable Long id, @Valid @RequestBody WalletUpdateDTO walletDTO) {
         WalletRespondeDTO wallet = walletService.update(id, walletDTO);
         return ResponseEntity.ok(wallet);
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Void> updatePartialWallet(@Valid @RequestBody WalletPatchDTO walletDTO, @PathVariable Long id) {
+    public ResponseEntity<Void> updatePartialWallet(@PathVariable Long id, @Valid @RequestBody WalletPatchDTO walletDTO) {
         walletService.updatePartial(id, walletDTO);
         return ResponseEntity.noContent().build();
     }
