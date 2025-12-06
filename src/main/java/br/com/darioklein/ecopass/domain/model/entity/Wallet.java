@@ -1,4 +1,4 @@
-package br.com.darioklein.ecopass.domain.model;
+package br.com.darioklein.ecopass.domain.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

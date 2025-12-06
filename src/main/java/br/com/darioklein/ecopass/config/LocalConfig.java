@@ -1,9 +1,11 @@
 package br.com.darioklein.ecopass.config;
 
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialDTO;
+import br.com.darioklein.ecopass.domain.dto.recyclingDTO.RecyclingCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletCreateDTO;
 import br.com.darioklein.ecopass.service.MaterialService;
+import br.com.darioklein.ecopass.service.RecyclingService;
 import br.com.darioklein.ecopass.service.UserService;
 import br.com.darioklein.ecopass.service.WalletService;
 import jakarta.annotation.PostConstruct;
@@ -23,6 +25,7 @@ public class LocalConfig {
     private UserService userService;
     private WalletService walletService;
     private MaterialService materialService;
+    private RecyclingService recyclingService;
 
     public void startUsersDb() {
 
@@ -45,9 +48,17 @@ public class LocalConfig {
     public void startMaterialsDb() {
         MaterialDTO material1 = new MaterialDTO("Plástico", BigDecimal.valueOf(0.38), true);
         MaterialDTO material2 = new MaterialDTO("Papel", BigDecimal.valueOf(0.11), true);
-        MaterialDTO material3 = new MaterialDTO("Metal", BigDecimal.valueOf( 0.79), true);
+        MaterialDTO material3 = new MaterialDTO("Metal", BigDecimal.valueOf(0.79), true);
 
         materialService.createAll(List.of(material1, material2, material3));
+    }
+
+    public void startRecyclingDb() {
+        RecyclingCreateDTO recycling1 = new RecyclingCreateDTO(userService.findById(1L).id(), "Lixo bem separado");
+        RecyclingCreateDTO recycling2 = new RecyclingCreateDTO(userService.findById(2L).id(), "Lixo mal separado");
+        RecyclingCreateDTO recycling3 = new RecyclingCreateDTO(userService.findById(3L).id(), null);
+
+        recyclingService.createAll(List.of(recycling1, recycling2, recycling3));
     }
 
     @PostConstruct
@@ -55,5 +66,6 @@ public class LocalConfig {
         startUsersDb();
         startWalletsDb();
         startMaterialsDb();
+        startRecyclingDb();
     }
 }

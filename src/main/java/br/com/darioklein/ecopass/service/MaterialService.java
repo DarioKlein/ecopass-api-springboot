@@ -4,7 +4,7 @@ import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialDTO;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialPatchDTO;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialResponseDTO;
 import br.com.darioklein.ecopass.domain.mapper.MaterialMapper;
-import br.com.darioklein.ecopass.domain.model.Material;
+import br.com.darioklein.ecopass.domain.model.entity.Material;
 import br.com.darioklein.ecopass.repository.MaterialRepository;
 import br.com.darioklein.ecopass.service.exception.ObjectNotFoundException;
 import br.com.darioklein.ecopass.utils.MaterialValidator;

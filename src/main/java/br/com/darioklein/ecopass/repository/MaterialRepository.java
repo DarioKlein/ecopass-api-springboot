@@ -1,6 +1,6 @@
 package br.com.darioklein.ecopass.repository;
 
-import br.com.darioklein.ecopass.domain.model.Material;
+import br.com.darioklein.ecopass.domain.model.entity.Material;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

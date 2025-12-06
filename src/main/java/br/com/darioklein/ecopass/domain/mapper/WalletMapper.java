@@ -4,7 +4,7 @@ import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletPatchDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletRespondeDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletUpdateDTO;
-import br.com.darioklein.ecopass.domain.model.Wallet;
+import br.com.darioklein.ecopass.domain.model.entity.Wallet;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

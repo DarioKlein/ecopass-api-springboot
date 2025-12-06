@@ -1,7 +1,7 @@
 package br.com.darioklein.ecopass.utils;
 
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialUniqueField;
-import br.com.darioklein.ecopass.domain.model.Material;
+import br.com.darioklein.ecopass.domain.model.entity.Material;
 import br.com.darioklein.ecopass.repository.MaterialRepository;
 import br.com.darioklein.ecopass.service.exception.DataIntegrityViolationException;
 

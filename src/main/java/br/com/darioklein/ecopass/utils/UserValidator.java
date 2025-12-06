@@ -1,7 +1,7 @@
 package br.com.darioklein.ecopass.utils;
 
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserUniqueFields;
-import br.com.darioklein.ecopass.domain.model.User;
+import br.com.darioklein.ecopass.domain.model.entity.User;
 import br.com.darioklein.ecopass.repository.UserRepository;
 import br.com.darioklein.ecopass.service.exception.DataIntegrityViolationException;
 

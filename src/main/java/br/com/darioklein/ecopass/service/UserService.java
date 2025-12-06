@@ -6,7 +6,7 @@ import br.com.darioklein.ecopass.domain.dto.userDTO.UserUpdateDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserPatchDTO;
 import br.com.darioklein.ecopass.domain.mapper.UserMapper;
 import br.com.darioklein.ecopass.service.exception.ObjectNotFoundException;
-import br.com.darioklein.ecopass.domain.model.User;
+import br.com.darioklein.ecopass.domain.model.entity.User;
 import br.com.darioklein.ecopass.repository.UserRepository;
 import br.com.darioklein.ecopass.utils.UserValidator;
 import lombok.AllArgsConstructor;

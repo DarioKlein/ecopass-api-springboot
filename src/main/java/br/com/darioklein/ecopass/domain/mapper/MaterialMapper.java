@@ -3,7 +3,7 @@ package br.com.darioklein.ecopass.domain.mapper;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialDTO;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialPatchDTO;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialResponseDTO;
-import br.com.darioklein.ecopass.domain.model.Material;
+import br.com.darioklein.ecopass.domain.model.entity.Material;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;

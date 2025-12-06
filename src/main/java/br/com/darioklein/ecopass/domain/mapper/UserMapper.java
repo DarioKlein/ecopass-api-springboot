@@ -4,7 +4,7 @@ import br.com.darioklein.ecopass.domain.dto.userDTO.UserCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserPatchDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserResponseDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserUpdateDTO;
-import br.com.darioklein.ecopass.domain.model.User;
+import br.com.darioklein.ecopass.domain.model.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;

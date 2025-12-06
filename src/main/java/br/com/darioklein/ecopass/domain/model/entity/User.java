@@ -1,10 +1,12 @@
-package br.com.darioklein.ecopass.domain.model;
+package br.com.darioklein.ecopass.domain.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_USER")
@@ -39,6 +41,9 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Wallet wallet;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Recycling> recycling = new ArrayList<>();
 
     @PrePersist
     public void prePersist() {
