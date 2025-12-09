@@ -2,12 +2,10 @@ package br.com.darioklein.ecopass.config;
 
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialDTO;
 import br.com.darioklein.ecopass.domain.dto.recyclingDTO.RecyclingCreateDTO;
+import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletCreateDTO;
-import br.com.darioklein.ecopass.service.MaterialService;
-import br.com.darioklein.ecopass.service.RecyclingService;
-import br.com.darioklein.ecopass.service.UserService;
-import br.com.darioklein.ecopass.service.WalletService;
+import br.com.darioklein.ecopass.service.*;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +24,7 @@ public class LocalConfig {
     private WalletService walletService;
     private MaterialService materialService;
     private RecyclingService recyclingService;
+    private RecyclingMaterialService recyclingMaterialService;
 
     public void startUsersDb() {
 
@@ -61,11 +60,20 @@ public class LocalConfig {
         recyclingService.createAll(List.of(recycling1, recycling2, recycling3));
     }
 
+    public void startRecyclingMaterialDb() {
+        RecyclingMaterialCreateDTO recyclingMaterial1 = new RecyclingMaterialCreateDTO(materialService.findById(1L).id(), recyclingService.findById(1L).id(), BigDecimal.valueOf(12));
+        RecyclingMaterialCreateDTO recyclingMaterial2 = new RecyclingMaterialCreateDTO(materialService.findById(2L).id(), recyclingService.findById(1L).id(), BigDecimal.valueOf(8));
+        RecyclingMaterialCreateDTO recyclingMaterial3 = new RecyclingMaterialCreateDTO(materialService.findById(3L).id(), recyclingService.findById(1L).id(), BigDecimal.valueOf(6));
+
+        recyclingMaterialService.createAll(List.of(recyclingMaterial1, recyclingMaterial2, recyclingMaterial3));
+    }
+
     @PostConstruct
     public void init() {
         startUsersDb();
         startWalletsDb();
         startMaterialsDb();
         startRecyclingDb();
+        startRecyclingMaterialDb();
     }
 }

@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 public class RecyclingMaterial {
 
     @EmbeddedId
-    private RecyclingMaterialId id;
+    private RecyclingMaterialId id = new RecyclingMaterialId();
 
     @ManyToOne
     @MapsId("recyclingId")

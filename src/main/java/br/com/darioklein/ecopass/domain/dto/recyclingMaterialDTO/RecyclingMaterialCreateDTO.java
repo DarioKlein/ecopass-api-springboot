@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
-public record RecyclingMaterialDTO(
+public record RecyclingMaterialCreateDTO(
 
         @NotNull(message = "O id da reciclagem não pode ser nulo")
         Long recyclingId,
