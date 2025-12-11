@@ -10,12 +10,14 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, uses = RecyclingMaterialMapper.class)
 public interface RecyclingMapper {
 
     Recycling toEntity(RecyclingCreateDTO dto);
 
+
     @Mapping(source = "user.id", target = "userId")
+    @Mapping(source = "materialList", target = "materialList")
     RecyclingResponseDTO toResponse(Recycling entity);
 
     void updateEntityFromDto(RecyclingUpdateDTO dto, @MappingTarget Recycling entity);

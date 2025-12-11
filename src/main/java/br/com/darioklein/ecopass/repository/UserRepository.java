@@ -4,6 +4,9 @@ import br.com.darioklein.ecopass.domain.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByCpf(String cpf);
@@ -12,4 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByPhone(String phone);
 
+    List<User> findAllByOrderByWallet_PendingBalanceDesc();
+    List<User> findAllByOrderByBirthDate();
+    List<User> findByWallet_PendingBalanceBetween(BigDecimal min, BigDecimal max);
 }

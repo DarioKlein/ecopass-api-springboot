@@ -11,6 +11,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -49,13 +50,13 @@ public class ResourceExceptionHandler {
     @ExceptionHandler(InvalidFormatException.class)
     public ResponseEntity<StandardError> invalidFormat(InvalidFormatException e, HttpServletRequest request) {
 
-        String customMessage = String.format(
-                "Formato de dado inválido para o campo '%s'. O valor '%s' não pode ser convertido para o tipo '%s'.",
-                e.getPath().getLast().getFieldName(),
-                e.getTargetType().getSimpleName(),
-                e.getValue()
-        );
+        String customMessage = String.format("Formato de dado inválido para o campo '%s'. O valor '%s' não pode ser convertido para o tipo '%s'.", e.getPath().getLast().getFieldName(), e.getTargetType().getSimpleName(), e.getValue());
 
         return buildError(HttpStatus.BAD_REQUEST, customMessage, null, request);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<StandardError> handleEnumError(IllegalArgumentException e, HttpServletRequest request) {
+        return buildError(HttpStatus.BAD_REQUEST, e.getMessage(), null, request);
     }
 }

@@ -7,6 +7,7 @@ import br.com.darioklein.ecopass.domain.dto.recyclingDTO.RecyclingUpdateDTO;
 import br.com.darioklein.ecopass.domain.mapper.RecyclingMapper;
 import br.com.darioklein.ecopass.domain.model.entity.Recycling;
 import br.com.darioklein.ecopass.domain.model.entity.User;
+import br.com.darioklein.ecopass.domain.model.enumTypes.Status;
 import br.com.darioklein.ecopass.repository.RecyclingRepository;
 import br.com.darioklein.ecopass.repository.UserRepository;
 import br.com.darioklein.ecopass.service.exception.ObjectNotFoundException;
@@ -15,6 +16,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -35,6 +38,32 @@ public class RecyclingService {
     public List<RecyclingResponseDTO> findAll() {
         List<Recycling> recyclingList = recyclingRepository.findAll();
         return recyclingList.stream().map(mapper::toResponse).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public RecyclingResponseDTO findFirstByRegisterDate(Long userId) {
+        Recycling recycling = recyclingRepository.findFirstByUserIdOrderByRegisterDateDesc(userId);
+        return mapper.toResponse(recycling);
+    }
+
+    @Transactional(readOnly = true)
+    public List<RecyclingResponseDTO> findByUserIdAndStatus(Long userId, Status status) {
+        List<Recycling> recyclingList = recyclingRepository.findByUserIdAndStatus(userId, status);
+        return recyclingList.stream().map(mapper::toResponse).toList();
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<RecyclingResponseDTO> findByRegisterDateOrValidationDate(LocalDate date) {
+        LocalDateTime startOfDay = date.atStartOfDay();
+        List<Recycling> recyclingList = recyclingRepository.findByRegisterDateAfterOrValidationDateAfter(startOfDay, startOfDay);
+        return recyclingList.stream().map(mapper::toResponse).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<RecyclingResponseDTO> findByUserIdAndListMaterialName(Long userId, List<String> listMaterialName) {
+        List<Recycling> recyclingList = recyclingRepository.findByUserIdAndMaterialList_MaterialNameIn(userId, listMaterialName);
+        return  recyclingList.stream().map(mapper::toResponse).toList();
     }
 
     @Transactional
@@ -80,7 +109,7 @@ public class RecyclingService {
 
         mapper.patchEntityFromDto(dto, recyclingFound);
 
-        if(dto.status() != null) {
+        if (dto.status() != null) {
             recyclingFound.setValidationDate(RecyclingValidator.recyclingStatusValidator(dto.status()));
         }
 

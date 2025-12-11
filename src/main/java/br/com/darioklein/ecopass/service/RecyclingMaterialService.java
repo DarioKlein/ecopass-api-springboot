@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -35,10 +36,30 @@ public class RecyclingMaterialService {
     }
 
     @Transactional(readOnly = true)
-    public List<RecyclingMaterialResponseDTO> findAll() {
-        List<RecyclingMaterial> recyclingMaterials = recyclingMaterialRepository.findAll();
-        return recyclingMaterials.stream().map(mapper::toResponse).toList();
+    public List<RecyclingMaterialResponseDTO> findByRecyclingId(Long id) {
+        List<RecyclingMaterial> recyclingMaterialList = recyclingMaterialRepository.findById_RecyclingId(id);
+        return recyclingMaterialList.stream().map(mapper::toResponse).toList();
     }
+
+
+    @Transactional(readOnly = true)
+    public List<RecyclingMaterialResponseDTO> findAll() {
+        List<RecyclingMaterial> recyclingMaterialList = recyclingMaterialRepository.findAll();
+        return recyclingMaterialList.stream().map(mapper::toResponse).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<RecyclingMaterialResponseDTO> findQuantityKgLessThan(BigDecimal quantityKg) {
+        List<RecyclingMaterial> recyclingMaterialList = recyclingMaterialRepository.findByQuantityKgLessThan(quantityKg);
+        return recyclingMaterialList.stream().map(mapper::toResponse).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<RecyclingMaterialResponseDTO> findQuantityKgGreaterThan(BigDecimal quantityKg) {
+        List<RecyclingMaterial> recyclingMaterialList = recyclingMaterialRepository.findByQuantityKgGreaterThan(quantityKg);
+        return recyclingMaterialList.stream().map(mapper::toResponse).toList();
+    }
+
 
     @Transactional
     public RecyclingMaterialResponseDTO create(RecyclingMaterialCreateDTO dto) {

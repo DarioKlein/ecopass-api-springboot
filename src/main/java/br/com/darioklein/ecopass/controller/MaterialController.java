@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 
@@ -27,15 +28,27 @@ public class MaterialController {
     }
 
     @GetMapping
-    public ResponseEntity<List<MaterialResponseDTO>> findAllMaterials() {
-        List<MaterialResponseDTO> materials = materialService.findAll();
-        return ResponseEntity.ok(materials);
+    public ResponseEntity<List<MaterialResponseDTO>> findAllMaterial() {
+        List<MaterialResponseDTO> materialList = materialService.findAll();
+        return ResponseEntity.ok(materialList);
     }
 
     @GetMapping(value = "/search")
-    public ResponseEntity<List<MaterialResponseDTO>> findAllMaterialsByName(@RequestParam String name) {
-        List<MaterialResponseDTO> materials = materialService.findAllByName(name);
-        return ResponseEntity.ok(materials);
+    public ResponseEntity<List<MaterialResponseDTO>> findAllMaterialByName(@RequestParam String name) {
+        List<MaterialResponseDTO> materialList = materialService.findAllByName(name);
+        return ResponseEntity.ok(materialList);
+    }
+
+    @GetMapping("/less-than-equal")
+    public ResponseEntity<List<MaterialResponseDTO>> findAllMaterialLessThanEqualPricePerKg(@RequestParam BigDecimal pricePerKg) {
+        List<MaterialResponseDTO> materialList = materialService.findByLessThanEqualPricePerKg(pricePerKg);
+        return ResponseEntity.ok(materialList);
+    }
+
+    @GetMapping("/greater-than-equal")
+    public ResponseEntity<List<MaterialResponseDTO>> findAllMaterialGreaterThanEqualPricePerKg(@RequestParam BigDecimal pricePerKg) {
+        List<MaterialResponseDTO> materialList = materialService.findByGreaterThanEqualPricePerKg(pricePerKg);
+        return ResponseEntity.ok(materialList);
     }
 
     @PostMapping
@@ -62,4 +75,5 @@ public class MaterialController {
         materialService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }

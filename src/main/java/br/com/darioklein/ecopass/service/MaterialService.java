@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -37,6 +38,18 @@ public class MaterialService {
     public List<MaterialResponseDTO> findAllByName(String name) {
         List<Material> material = materialRepository.findAllByNameContainingIgnoreCase(name);
         return material.stream().map(mapper::toResponse).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<MaterialResponseDTO> findByLessThanEqualPricePerKg(BigDecimal pricePerKg) {
+        List<Material> materialList = materialRepository.findByPricePerKgLessThanEqual(pricePerKg);
+        return materialList.stream().map(mapper::toResponse).toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<MaterialResponseDTO> findByGreaterThanEqualPricePerKg(BigDecimal pricePerKg) {
+        List<Material> materialList = materialRepository.findByPricePerKgGreaterThanEqual(pricePerKg);
+        return materialList.stream().map(mapper::toResponse).toList();
     }
 
     @Transactional

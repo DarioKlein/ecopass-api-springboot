@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -21,7 +22,7 @@ public class Recycling {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",  nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Enumerated(EnumType.STRING)
@@ -35,6 +36,9 @@ public class Recycling {
 
     @Column(name = "obs")
     private String observation;
+
+    @OneToMany(mappedBy = "recycling", cascade = CascadeType.ALL)
+    private List<RecyclingMaterial> materialList;
 
     @PrePersist
     public void prePersist() {

@@ -28,9 +28,9 @@ public class LocalConfig {
 
     public void startUsersDb() {
 
-        UserCreateDTO user1 = new UserCreateDTO("Dario", "48141136576", "dario@mail.com", "12345678", "18997325622", LocalDate.of(2000, 10, 2));
+        UserCreateDTO user1 = new UserCreateDTO("Dario", "48141136576", "dario@mail.com", "12345678", "18997325622", LocalDate.of(1980, 10, 2));
         UserCreateDTO user2 = new UserCreateDTO("Eduardo", "15878396980", "eduardo@mail.com", "12345678", "18996358877", LocalDate.of(2000, 10, 2));
-        UserCreateDTO user3 = new UserCreateDTO("Luis", "36541198882", "luis@mail.com", "12345678", "18997325611", LocalDate.of(2000, 10, 2));
+        UserCreateDTO user3 = new UserCreateDTO("Luis", "36541198882", "luis@mail.com", "12345678", "18997325611", LocalDate.of(2010, 10, 2));
 
         userService.createAll(List.of(user1, user2, user3));
     }
@@ -45,9 +45,9 @@ public class LocalConfig {
     }
 
     public void startMaterialsDb() {
-        MaterialDTO material1 = new MaterialDTO("Plástico", BigDecimal.valueOf(0.38), true);
-        MaterialDTO material2 = new MaterialDTO("Papel", BigDecimal.valueOf(0.11), true);
-        MaterialDTO material3 = new MaterialDTO("Metal", BigDecimal.valueOf(0.79), true);
+        MaterialDTO material1 = new MaterialDTO("plastico", BigDecimal.valueOf(0.38), true);
+        MaterialDTO material2 = new MaterialDTO("papel", BigDecimal.valueOf(0.11), true);
+        MaterialDTO material3 = new MaterialDTO("metal", BigDecimal.valueOf(0.79), true);
 
         materialService.createAll(List.of(material1, material2, material3));
     }

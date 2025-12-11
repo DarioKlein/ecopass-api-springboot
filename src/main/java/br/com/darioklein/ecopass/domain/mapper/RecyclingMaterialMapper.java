@@ -2,6 +2,7 @@ package br.com.darioklein.ecopass.domain.mapper;
 
 import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialResponseDTO;
+import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialResponseRecyclingDTO;
 import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialUpdateDTO;
 import br.com.darioklein.ecopass.domain.model.entity.RecyclingMaterial;
 import org.mapstruct.Mapper;
@@ -20,6 +21,11 @@ public interface RecyclingMaterialMapper {
     @Mapping(source = "material.pricePerKg", target = "pricePerKg")
     @Mapping(target = "totalPrice", expression = "java(entity.getQuantityKg().multiply(entity.getMaterial().getPricePerKg()))")
     RecyclingMaterialResponseDTO toResponse(RecyclingMaterial entity);
+
+    @Mapping(source = "material.name", target = "materialName")
+    @Mapping(source = "material.pricePerKg", target = "pricePerKg")
+    @Mapping(target = "totalPrice", expression = "java(entity.getQuantityKg().multiply(entity.getMaterial().getPricePerKg()))")
+    RecyclingMaterialResponseRecyclingDTO toResponseRecycling(RecyclingMaterial entity);
 
     void updateEntityFromDto(RecyclingMaterialUpdateDTO dto,  @MappingTarget RecyclingMaterial entity);
 }

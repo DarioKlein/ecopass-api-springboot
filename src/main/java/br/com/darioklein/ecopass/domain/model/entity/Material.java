@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_MATERIAL")
@@ -26,4 +28,7 @@ public class Material {
 
     @Column(nullable = false)
     private Boolean active;
+
+    @ManyToMany(mappedBy = "favoriteMaterials")
+    private List<User> users = new ArrayList<>();
 }

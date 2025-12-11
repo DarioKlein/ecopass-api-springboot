@@ -1,8 +1,10 @@
 package br.com.darioklein.ecopass.domain.dto.recyclingDTO;
 
+import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialResponseRecyclingDTO;
 import br.com.darioklein.ecopass.domain.model.enumTypes.Status;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public record RecyclingResponseDTO(
 
@@ -11,6 +13,7 @@ public record RecyclingResponseDTO(
         Status status,
         LocalDateTime registerDate,
         LocalDateTime validationDate,
-        String observation
+        String observation,
+        List<RecyclingMaterialResponseRecyclingDTO> materialList
 ) {
 }
