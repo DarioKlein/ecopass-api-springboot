@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping(value = "/recycling")
 public class RecyclingController {
 
-    RecyclingServiceImpl recyclingService;
+    private final RecyclingServiceImpl recyclingService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<RecyclingResponseDTO> findRecyclingById(@PathVariable Long id) {

@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping(value = "/materials")
 public class MaterialController {
 
-    MaterialServiceImpl materialService;
+    private final MaterialServiceImpl materialService;
 
     @GetMapping("/{id}")
     public ResponseEntity<MaterialResponseDTO> findMaterialById(@PathVariable Long id) {
