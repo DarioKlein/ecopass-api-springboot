@@ -5,7 +5,7 @@ import br.com.darioklein.ecopass.domain.dto.recyclingDTO.RecyclingPatchDTO;
 import br.com.darioklein.ecopass.domain.dto.recyclingDTO.RecyclingResponseDTO;
 import br.com.darioklein.ecopass.domain.dto.recyclingDTO.RecyclingUpdateDTO;
 import br.com.darioklein.ecopass.domain.model.enumTypes.Status;
-import br.com.darioklein.ecopass.service.RecyclingService;
+import br.com.darioklein.ecopass.service.impl.RecyclingServiceImpl;
 import br.com.darioklein.ecopass.utils.StringUtils;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ import java.util.List;
 @RequestMapping(value = "/recycling")
 public class RecyclingController {
 
-    RecyclingService recyclingService;
+    RecyclingServiceImpl recyclingService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<RecyclingResponseDTO> findRecyclingById(@PathVariable Long id) {

@@ -5,7 +5,7 @@ import br.com.darioklein.ecopass.domain.dto.recyclingDTO.RecyclingCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.UserCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletCreateDTO;
-import br.com.darioklein.ecopass.service.*;
+import br.com.darioklein.ecopass.service.impl.*;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +20,11 @@ import java.util.List;
 @Profile("local")
 public class LocalConfig {
 
-    private UserService userService;
-    private WalletService walletService;
-    private MaterialService materialService;
-    private RecyclingService recyclingService;
-    private RecyclingMaterialService recyclingMaterialService;
+    private UserServiceImpl userService;
+    private WalletServiceImpl walletService;
+    private MaterialServiceImpl materialService;
+    private RecyclingServiceImpl recyclingService;
+    private RecyclingMaterialServiceImpl recyclingMaterialService;
 
     public void startUsersDb() {
 

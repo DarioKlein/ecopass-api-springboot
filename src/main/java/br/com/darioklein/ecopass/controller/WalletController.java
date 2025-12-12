@@ -4,7 +4,7 @@ import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletCreateDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletPatchDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletRespondeDTO;
 import br.com.darioklein.ecopass.domain.dto.walletDTO.WalletUpdateDTO;
-import br.com.darioklein.ecopass.service.WalletService;
+import br.com.darioklein.ecopass.service.impl.WalletServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.net.URI;
 @RequestMapping(value = "/wallets")
 public class WalletController {
 
-    private final WalletService walletService;
+    private final WalletServiceImpl walletService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<WalletRespondeDTO> findWalletById(@PathVariable Long id) {

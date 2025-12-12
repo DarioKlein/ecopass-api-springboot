@@ -1,8 +1,7 @@
 package br.com.darioklein.ecopass.controller;
 
-import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialResponseDTO;
 import br.com.darioklein.ecopass.domain.dto.userDTO.*;
-import br.com.darioklein.ecopass.service.UserService;
+import br.com.darioklein.ecopass.service.impl.UserServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UserController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserResponseDTO> findUserById(@PathVariable Long id) {
@@ -69,29 +68,15 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteById(id);
+    @PatchMapping(value = "/password/{id}")
+    public ResponseEntity<Void> updateUserPassword(@PathVariable Long id, @Valid @RequestBody UserUpdatePasswordDTO dto) {
+        userService.updatePassword(id, dto);
         return ResponseEntity.noContent().build();
     }
 
-    // User Material Favorite Controllers
-
-    @GetMapping("/{userId}/favorites")
-    public ResponseEntity<List<MaterialResponseDTO>> listUserMaterialFavorites(@PathVariable Long userId) {
-        List<MaterialResponseDTO> materialList = userService.listFavoriteMaterial(userId);
-        return ResponseEntity.ok(materialList);
-    }
-
-    @PostMapping("/favorite")
-    public ResponseEntity<Void> createUserMaterialFavorite(@RequestParam Long userId, @RequestParam Long materialId) {
-        userService.addFavoriteMaterial(userId, materialId);
-        return ResponseEntity.ok().build();
-    }
-
-    @DeleteMapping("/favorite")
-    public ResponseEntity<Void> deleteUserMaterialFavorite(@RequestParam Long userId, @RequestParam Long materialId) {
-        userService.removeFavoriteMaterial(userId, materialId);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

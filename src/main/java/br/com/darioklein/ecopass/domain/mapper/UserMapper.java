@@ -1,9 +1,6 @@
 package br.com.darioklein.ecopass.domain.mapper;
 
-import br.com.darioklein.ecopass.domain.dto.userDTO.UserCreateDTO;
-import br.com.darioklein.ecopass.domain.dto.userDTO.UserPatchDTO;
-import br.com.darioklein.ecopass.domain.dto.userDTO.UserResponseDTO;
-import br.com.darioklein.ecopass.domain.dto.userDTO.UserUpdateDTO;
+import br.com.darioklein.ecopass.domain.dto.userDTO.*;
 import br.com.darioklein.ecopass.domain.model.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
@@ -19,4 +16,6 @@ public interface UserMapper {
     void updateEntityFromDto(UserUpdateDTO dto, @MappingTarget User entity);
 
     void patchEntityFromDto(UserPatchDTO dto, @MappingTarget User entity);
+
+    void passwordEntityFromDto(UserUpdatePasswordDTO dto, @MappingTarget User entity);
 }

@@ -4,7 +4,7 @@ import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMateri
 import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialResponseDTO;
 import br.com.darioklein.ecopass.domain.dto.recyclingMaterialDTO.RecyclingMaterialUpdateDTO;
 import br.com.darioklein.ecopass.domain.model.entity.id.RecyclingMaterialId;
-import br.com.darioklein.ecopass.service.RecyclingMaterialService;
+import br.com.darioklein.ecopass.service.impl.RecyclingMaterialServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping(value = "/recycling-materials")
 public class RecyclingMaterialController {
 
-    private final RecyclingMaterialService recyclingMaterialService;
+    private final RecyclingMaterialServiceImpl recyclingMaterialService;
 
     @GetMapping("/search-by-id")
     public ResponseEntity<RecyclingMaterialResponseDTO> findRecyclingMaterialById(@RequestParam Long materialId, @RequestParam Long recyclingId) {

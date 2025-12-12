@@ -3,7 +3,7 @@ package br.com.darioklein.ecopass.controller;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialDTO;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialPatchDTO;
 import br.com.darioklein.ecopass.domain.dto.materialDTO.MaterialResponseDTO;
-import br.com.darioklein.ecopass.service.MaterialService;
+import br.com.darioklein.ecopass.service.impl.MaterialServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping(value = "/materials")
 public class MaterialController {
 
-    MaterialService materialService;
+    MaterialServiceImpl materialService;
 
     @GetMapping("/{id}")
     public ResponseEntity<MaterialResponseDTO> findMaterialById(@PathVariable Long id) {
