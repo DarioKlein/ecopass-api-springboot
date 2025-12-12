@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -29,11 +30,8 @@ public class Wallet {
     @Column(name = "pending_balance", precision = 10, scale = 2,  nullable = false)
     private BigDecimal pendingBalance;
 
+    @CreationTimestamp
     @Column(name = "created_at",  nullable = false)
     private LocalDate createdAt;
 
-    @PrePersist
-    public void prePersist() {
-        createdAt = LocalDate.now();
-    }
 }

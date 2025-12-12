@@ -2,6 +2,7 @@ package br.com.darioklein.ecopass.domain.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,6 +37,7 @@ public class User {
 
     private LocalDate birthDate;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
@@ -52,9 +54,4 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "material_id")
     )
     private List<Material> favoriteMaterials = new ArrayList<>();
-
-    @PrePersist
-    public void prePersist() {
-        createdAt = LocalDateTime.now();
-    }
 }

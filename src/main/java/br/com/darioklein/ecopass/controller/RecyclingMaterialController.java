@@ -23,8 +23,8 @@ public class RecyclingMaterialController {
     private final RecyclingMaterialServiceImpl recyclingMaterialService;
 
     @GetMapping("/search-by-id")
-    public ResponseEntity<RecyclingMaterialResponseDTO> findRecyclingMaterialById(@RequestParam Long materialId, @RequestParam Long recyclingId) {
-        RecyclingMaterialId id = new RecyclingMaterialId(materialId, recyclingId);
+    public ResponseEntity<RecyclingMaterialResponseDTO> findRecyclingMaterialById(@RequestParam Long recyclingId, @RequestParam Long materialId) {
+        RecyclingMaterialId id = new RecyclingMaterialId(recyclingId, materialId);
         return ResponseEntity.ok(recyclingMaterialService.findById(id));
     }
 
@@ -34,7 +34,7 @@ public class RecyclingMaterialController {
         return ResponseEntity.ok(RecyclingMaterialList);
     }
 
-    @GetMapping("/search-by-material/{id}")
+    @GetMapping("/search-by-recycling/{id}")
     public ResponseEntity<List<RecyclingMaterialResponseDTO>> findRecyclingMaterialByRecyclingId(@PathVariable Long id) {
         List<RecyclingMaterialResponseDTO> recyclingMaterialList = recyclingMaterialService.findByRecyclingId(id);
         return ResponseEntity.ok(recyclingMaterialList);
@@ -60,15 +60,15 @@ public class RecyclingMaterialController {
     }
 
     @PutMapping
-    public ResponseEntity<RecyclingMaterialResponseDTO> updateRecyclingMaterial(@RequestParam Long materialId, @RequestParam Long recyclingId, @Valid @RequestBody RecyclingMaterialUpdateDTO dto) {
-        RecyclingMaterialId id = new RecyclingMaterialId(materialId, recyclingId);
+    public ResponseEntity<RecyclingMaterialResponseDTO> updateRecyclingMaterial(@RequestParam Long recyclingId, @RequestParam Long materialId, @Valid @RequestBody RecyclingMaterialUpdateDTO dto) {
+        RecyclingMaterialId id = new RecyclingMaterialId(recyclingId, materialId);
         RecyclingMaterialResponseDTO recyclingMaterial = recyclingMaterialService.update(id, dto);
         return ResponseEntity.ok(recyclingMaterial);
     }
 
     @DeleteMapping
-    public void deleteRecyclingMaterial(@RequestParam Long materialId, @RequestParam Long recyclingId) {
-        RecyclingMaterialId id = new RecyclingMaterialId(materialId, recyclingId);
+    public void deleteRecyclingMaterial(@RequestParam Long recyclingId, @RequestParam Long materialId) {
+        RecyclingMaterialId id = new RecyclingMaterialId(recyclingId, materialId);
         recyclingMaterialService.deleteById(id);
     }
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Recycling {
     @Column(nullable = false)
     private Status status;
 
+    @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime registerDate;
 
@@ -42,7 +44,6 @@ public class Recycling {
 
     @PrePersist
     public void prePersist() {
-        registerDate = LocalDateTime.now();
         status = Status.PENDING;
     }
 }

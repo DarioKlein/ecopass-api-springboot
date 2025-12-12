@@ -113,16 +113,16 @@ ecopass/
 
 ### Materiais de Reciclagem (`/recycling-materials`)
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| `GET` | `/recycling-materials/search-by-id?materialId=X&recyclingId=Y` | Buscar por ID composto |
-| `GET` | `/recycling-materials` | Listar todos os materiais de reciclagem |
-| `GET` | `/recycling-materials/search-by-material/{id}` | Buscar materiais por ID de reciclagem |
-| `GET` | `/recycling-materials/less-than?quantityKg=X` | Buscar com quantidade menor que |
-| `GET` | `/recycling-materials/greater-than?quantityKg=X` | Buscar com quantidade maior que |
-| `POST` | `/recycling-materials` | Criar novo material de reciclagem |
-| `PUT` | `/recycling-materials?materialId=X&recyclingId=Y` | Atualizar material de reciclagem |
-| `DELETE` | `/recycling-materials?materialId=X&recyclingId=Y` | Deletar material de reciclagem |
+| Método | Endpoint                                                       | Descrição |
+|--------|----------------------------------------------------------------|-----------|
+| `GET` | `/recycling-materials/search-by-id?recyclingId=X&materialId=Y` | Buscar por ID composto |
+| `GET` | `/recycling-materials`                                         | Listar todos os materiais de reciclagem |
+| `GET` | `/recycling-materials/search-by-material/{id}`                 | Buscar materiais por ID de reciclagem |
+| `GET` | `/recycling-materials/less-than?quantityKg=X`                  | Buscar com quantidade menor que |
+| `GET` | `/recycling-materials/greater-than?quantityKg=X`               | Buscar com quantidade maior que |
+| `POST` | `/recycling-materials`                                         | Criar novo material de reciclagem |
+| `PUT` | `/recycling-materials?recyclingId=X&materialId=Y`              | Atualizar material de reciclagem |
+| `DELETE` | `/recycling-materials?recyclingId=X&materialId=Y`              | Deletar material de reciclagem |
 
 ## Status de Reciclagem
 

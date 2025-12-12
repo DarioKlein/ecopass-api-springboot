@@ -1,5 +1,6 @@
 package br.com.darioklein.ecopass.domain.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class Material {
     @Column(nullable = false)
     private Boolean active;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "favoriteMaterials")
     private List<User> users = new ArrayList<>();
 }
